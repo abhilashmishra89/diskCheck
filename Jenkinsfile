@@ -29,6 +29,7 @@ pipeline {
             steps{withEnv(["HOME=${env.WORKSPACE}"]) {
                 // sh 'scp -r diskCheck.py my_config.py mailer.py  192.168.11.141:/scripts/'
                 sh 'sshpass -p drishti123 scp -o strictHostKeyChecking=no  diskCheck.py  mailer.py  192.168.11.141:/scripts/'
+                // sh 'sshpass -p drishti123 scp -o strictHostKeyChecking=no  my_config.py  192.168.11.141:/scripts/'
             }
         }
         }
