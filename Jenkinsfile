@@ -8,6 +8,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'echo "in Build Stage"'
+                sh 'yum install sshpass -y'
                 // sh 'sshpass -f password141 ssh -o strictHostKeyChecking=no root@localhost "cp -r /scripts/bashrc /root/.bashrc"'
                 // sh 'sshpass -f password141 ssh -o strictHostKeyChecking=no root@localhost "source /root/.bashrc"'
                 // sh 'sshpass -f password141 ssh -o strictHostKeyChecking=no root@localhost "cp -r /scripts/hosts /etc/"'
@@ -23,7 +24,8 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh 'cp -r diskCheck.py /scripts/'
+                // sh 'scp -r diskCheck.py my_config.py mailer.py  192.168.11.141:/scripts/'
+                sh 'sshpass -p drishti123 scp -o strictHostKeyChecking=no  diskCheck.py my_config.py mailer.py  192.168.11.141:/scripts/'
             }
         }
         
