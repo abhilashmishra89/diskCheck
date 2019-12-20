@@ -19,8 +19,7 @@ def generateHtml():
     a = myServers
     for i in a:
         os.system("echo '<pre>'>> /tmp/disk_check.html")
-        message = 'echo "<h3>Below is status of : {} </h3>" >> {}'.format(
-            i, html_file)
+        message = 'echo "<h3>Below is status of : {0} </h3>" >> {1}'.format(i, html_file)
         os.system(message)
         os.system(op1 + i + op2 + op3)
         os.system(
